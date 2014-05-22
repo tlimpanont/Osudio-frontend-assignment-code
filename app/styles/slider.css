@@ -1,0 +1,34 @@
+.slideshow {
+    width: 173px;
+    height: 251px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+.slide-container > figure {
+    display: inline-block;
+    padding: 3px;
+    border: 1px solid silver;
+}
+
+.slide-container figure > img {
+    display: block;
+}
+
+.slide-container {
+    position: absolute;
+}
+
+.prev {
+    display: inline-block;
+    text-indent: -9999px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid silver;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    line-height: 251px;
+    outline: none !important;
+}
