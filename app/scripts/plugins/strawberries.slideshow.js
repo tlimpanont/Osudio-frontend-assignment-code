@@ -35,9 +35,15 @@
       $( ".prev" ).on("click", function () {
         me.previous();
       });
-      Ply.core.listen("dot.changed", function(subName, context, payload){
-        me.goto(payload);
-      }, this);
+      
+      /*
+        listen to event when user clicked the dot below the image
+        and then show the right image
+      */
+      jQuery(window).on("dot.changed", function(event, position) {
+          me.goto(position);
+      });
+
     },
 
     getSlideWidth: function () {
@@ -79,10 +85,27 @@
     },
 
     goto: function (position, triggeredFromSlideshow) {
-      this.$slidesContainer.css("left", -1 * this.slideWidth * position);
+      /*
+        in this particulary example the slideshow mechanism based on position of slideshow container
+        does not work well. the toggle visibility mechanism works better in all cases
+      */ 
+      this.$slidesContainer.find("figure")
+      // first hide all the figures of the slideshow
+      .hide()
+      // fadeIn the figure in question
+      .filter(function(index, figure) {
+        return (parseInt(jQuery(figure).index()) == position)
+      })
+      .show();
+
       this.currentSlide = position;
+
       if (triggeredFromSlideshow) {
-        Ply.core.notify("slide.changed", this, position);
+        /*
+          there's no need to send this instance to the trigger callback as a context
+          all we want to know is the position of the currentSlide
+        */
+        jQuery(window).trigger("slide.changed", [position]);
       }
     }
   };

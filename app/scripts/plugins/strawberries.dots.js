@@ -24,14 +24,29 @@
     init: function () {
       this.dots = $(".dot");
       var me = this;
-       Ply.core.listen("slide.changed", function(subName, context, payload){
-         me.switchDot(payload);
-       });
-    },
 
-    switchDot : function (position){
+      this.dots.first().addClass("active");
+      
+      this.dots.on("click", function(e) {
+          var thisDot = jQuery(e.currentTarget);
+          var position = parseInt(jQuery(thisDot).parent().data("value"));
+          this.switchDot(e, position);
+      }.bind(this));
+
+      /*
+        There's no need to write own pub/sub system. jQuery provided us a very robust
+        solution for that with on and trigger. To keep things short in code we can 
+        use jQuery.proxy to pass over this as the object context
+      */
+      jQuery(window).on("slide.changed", jQuery.proxy(this.switchDot, this));
+    },
+    /*
+      changing callback parameters because this function is an event driven callback (first argument)
+    */
+    switchDot : function (event, position){
       this.dots.removeClass("active");
       $(this.dots[position]).addClass("active");
+      jQuery(window).trigger("dot.changed", [position]);
     }
   };
 

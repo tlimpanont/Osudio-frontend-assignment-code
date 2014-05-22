@@ -2,57 +2,114 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="ratio=1,zoom=100">
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
-        <!-- build:js scripts/main.js -->
-        <script src="components/jquery/jquery.js"></script>
-        <script src="components/ply/core.js"></script>
-        <script src="scripts/plugins/strawberries.slideshow.js"></script>
-        <script src="scripts/plugins/strawberries.dots.js"></script>
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
-    </head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Osudio frontend assigment</title>
+<meta name="description" content="">
+<!-- 
+    The key "ratio" is not recognized and ignored. 
+    The key "zoom" is not recognized and ignored.
+-->
+<!-- modern mobile boiler template for meta tag -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+<!-- build:js scripts/vendor/modernizr.js -->
+<script src="components/modernizr/modernizr.js"></script>
+<!-- endbuild -->
+<!-- build:js scripts/main.js -->
+<script src="components/jquery/jquery.js"></script>
+<script src="components/ply/core.js"></script>
+<script src="scripts/plugins/strawberries.slideshow.js"></script>
+<script src="scripts/plugins/strawberries.dots.js"></script>
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
+</head>
+<body>
 
-    <body>
-        <section class="container">
-            <h2>Strawberries Test</h2>
-            <a href="javascript:;" class="prev">prev</a><!--
-         --><div id="slideshow" class="slideshow">
-                <div class="slide-container">
-                    <figure><IMG src="images/kookaburra.jpg" height="240" width="165"></figure><!--
-                 --><figure><IMG src="images/lorikeet.jpg" height="240" width="165"></figure><!--
-                 --><figure><IMG src="images/pelican.jpg" height="240" width="165"></figure>
-                </div>
-            </div><!--
-         --><a href="javascript:;" class="next">next</a>
-            <div id="dots" class="dots">
-                <ul class="dot-list">
-                    <li value="1" class="dot-list-item"><span class="dot"></span><li value="1"
-						class="dot-list-item"><span class="dot"></span><li value="1" class="dot-list-item"><span class="dot"></span>
-                </ul>
-            </div>
-        </section>
-        <section id="main content"><font face="Arial"><h1>This is the test</h1><p>Dear contenstant,</p><p>
-                <p>This is the Strawberries interview test. All our <b>front-end developers</b> contributed to this beautiful page.
-                However, it seems that the pizza they ate went bad and some of their misery went into the code.</p><p>Your assignment
-                is to fix all the broken stuff you can find and even complete the (missing) functionality. Most of us are
-                no protocol fetishists so feel free to use the solutions you think are the best.</p><em>But make sure you can explain
-                how you did things and why.</em></p></font></section>
+<!-- 
+    according http://html5doctor.com/the-section-element/
+    container is not an element that represents a generic container.
+    A general rule is that the section element is appropriate only if the element’s contents would be listed explicitly in the document’s outline.
+    ** Change section tag into div tag
+    Why not everything in container?
+-->
+<div class="container">
+    <h2>Strawberries Test</h2>
+    <a href="javascript:;" class="prev">prev</a>
+    <!--
+             -->
+    <div id="slideshow" class="slideshow">
+        <div class="slide-container">
+            <!-- 
+                it's 2014 not 1996 | IMG all UPPERCASE should be lowercase,
+                no alt attribute defined
+            -->
+            <figure>
+                <img src="images/kookaburra.jpg" height="240" width="165" alt="kookaburra">
+            </figure>
+            <!--
+                     -->
+            <figure>
+                <img src="images/lorikeet.jpg" height="240" width="165" alt="lorikeet">
+            </figure>
+            <!--
+                     -->
+            <figure>
+                <img src="images/pelican.jpg" height="240" width="165" alt="pelican">
+            </figure>
+        </div>
+    </div>
+    <!--
+             -->
+    <a href="javascript:;" class="next">next</a>
+    <div id="dots" class="dots">
+        <ul class="dot-list">
+            <!-- 
+                not sure why value attribute is needed, li tags are not closed well
+                but in this case i will use it as an index of the slide/dot
+                also convert it into correct HTML-5 attribute
+            -->
+            <li data-value="0" class="dot-list-item">
+                <span class="dot"></span>
+            </li>
+            <li data-value="1" class="dot-list-item">
+                <span class="dot"></span>
+            </li>
+            <li data-value="2" class="dot-list-item">
+                <span class="dot"></span>
+            </li>
+        </ul>
+    </div>
 
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+    <!-- id white space??  make main_content or something like that -->
+    <section id="main_content">
+    <!-- NOT VERY SEXY TO USE FONT tag. The <font> tag is not supported in HTML5. Use CSS instead.-->
+        <h1>This is the test</h1>
+        <p>
+            Dear contenstant,
+        </p>
+        <p>
+            <p>
+                This is the Strawberries interview test. All our <b>front-end developers</b> contributed to this beautiful page. However, it seems that the pizza they ate went bad and some of their misery went into the code.
+            </p>
+            <p>
+                Your assignment is to fix all the broken stuff you can find and even complete the (missing) functionality. Most of us are no protocol fetishists so feel free to use the solutions you think are the best.
+            </p>
+            <em>But make sure you can explain how you did things and why.</em>
+        </p>
+    </section>
 
-        <link rel="stylesheet" href="styles/normalize.css">
-        <link rel="stylesheet" href="styles/main.css">
+</div>
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<link rel="stylesheet" href="styles/normalize.css">
+<link rel="stylesheet" href="styles/main.css">
 <link rel="stylesheet" href="styles/slider.css">
 </body>
 </html>
